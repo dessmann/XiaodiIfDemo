@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '26.0.2'
+    defaultConfig {
+        applicationId "com.dsm.xiaodiif"
+        minSdkVersion 18
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    testCompile 'junit:junit:4.12'
+    //可在浏览器查看数据库
+    debugCompile 'com.amitshekhar.android:debug-db:1.0.1'
+
+//    compile project(':biz_xiaodi_sdk')
+
+    compile 'com.yolanda.nohttp:nohttp:1.1.0'
+    compile 'no.nordicsemi.android:dfu:0.6.2'
+    compile 'no.nordicsemi.android.support.v18:scanner:0.1.1'
+    compile(name:'biz_xiaodi_sdk-release-v3.4', ext:'aar')
+    compile(name: 'lib_base-release-v3.4.3', ext: 'aar')
+    compile(name:'lib_bluetoothle-release-v3.4', ext:'aar')
+}
