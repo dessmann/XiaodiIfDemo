@@ -5,4 +5,5 @@
     <string name="as_add_lock">模拟添加设备</string>
     <string name="wifi">配置wifi</string>
     <string name="upload_log">上传日志</string>
+    <string name="load_device_list">加载设备列表</string>
 </resources>

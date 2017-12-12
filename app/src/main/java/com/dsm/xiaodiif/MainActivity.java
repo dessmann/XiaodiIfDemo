@@ -38,6 +38,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.loginButton).setOnClickListener(this);
         findViewById(R.id.addLockButton).setOnClickListener(this);
         findViewById(R.id.configWifiButton).setOnClickListener(this);
+        findViewById(R.id.loadDeviceListButton).setOnClickListener(this);
         findViewById(R.id.uploadLogButton).setOnClickListener(this);
         logTextView = (TextView) findViewById(R.id.logTextView);
         dialog = new ProgressDialog(this);
@@ -60,7 +61,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         if (view.getId() == R.id.initButton) {
             //库初始化
-            XiaodiSdkLibInit.init(this, "15");
+            XiaodiSdkLibInit.init(this, "26");
 //            ServerUnit.getInstance().enableOnlineServer();
             logTextView.setText("库初始化成功");
         } else if (view.getId() == R.id.loginButton) {
@@ -216,6 +217,31 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     );
                 }
             }).walk();
+        } else if (view.getId() == R.id.loadDeviceListButton) {
+            dialog.show();
+            ServerUnit.getInstance().loadMainDeviceList("18668165280", null, new ServerUnit.OnServerUnitListener() {
+                @Override
+                public void success(final List list, String s) {
+                    dialog.dismiss();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            logTextView.setText(list.toString());
+                        }
+                    });
+                }
+
+                @Override
+                public void failure(final String s, int i) {
+                    dialog.dismiss();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            logTextView.setText(s);
+                        }
+                    });
+                }
+            });
         } else if (view.getId() == R.id.uploadLogButton) {
             dialog.show();
             ServerUnit.getInstance().uploadOperatorLog(new ServerUnit.OnServerUnitListener() {
