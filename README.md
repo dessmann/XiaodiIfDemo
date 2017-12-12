@@ -4,12 +4,12 @@ XiaodiIfDemo
 
 # 一.请引入相关的库文件  
 ```java  
-  compile 'com.yolanda.nohttp:nohttp:1.1.0'    
-  compile 'no.nordicsemi.android:dfu:0.6.2'  
-  compile 'no.nordicsemi.android.support.v18:scanner:0.1.1' 
-  compile(name:'biz_xiaodi_sdk-release-v3.4', ext:'aar')  
-  compile(name:'lib_base-release-v3.4', ext:'aar')   
-  compile(name:'lib_bluetoothle-release-v3.4', ext:'aar')  
+    compile 'com.yolanda.nohttp:nohttp:1.1.0'
+    compile 'no.nordicsemi.android:dfu:0.6.2'
+    compile 'no.nordicsemi.android.support.v18:scanner:0.1.1'
+    compile(name:'biz_xiaodi_sdk-release-v3.4.2', ext:'aar')
+    compile(name: 'lib_base-release-v3.4.4', ext: 'aar')
+    compile(name:'lib_bluetoothle-release-v3.4.1', ext:'aar')
 ```
 完整的引 可能像这样  
 
@@ -74,6 +74,11 @@ XiaodiIfDemo
 
 # 五.更新历史
 &nbsp;&nbsp;&nbsp;&nbsp;最新的的更新历史请参考项目Release标记
+
+&nbsp;&nbsp;&nbsp;&nbsp;版本: v3.4.3
+&nbsp;&nbsp;&nbsp;&nbsp;更新日期：2017/12/12 10:53  
+&nbsp;&nbsp;&nbsp;&nbsp;更新内容：  
+&nbsp;&nbsp;&nbsp;&nbsp;修复服务器token加载异常问题  
 
 &nbsp;&nbsp;&nbsp;&nbsp;版本: v3.4.2  
 &nbsp;&nbsp;&nbsp;&nbsp;更新日期：2017/7/28 17:45  
