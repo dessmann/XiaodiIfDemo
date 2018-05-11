@@ -61,7 +61,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         if (view.getId() == R.id.initButton) {
             //库初始化
-            XiaodiSdkLibInit.init(this, "1");
+            XiaodiSdkLibInit.init(this, "25");
 //            ServerUnit.getInstance().enableOnlineServer();
             logTextView.setText("库初始化成功");
         } else if (view.getId() == R.id.loginButton) {

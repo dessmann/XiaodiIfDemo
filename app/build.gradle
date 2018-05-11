@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.dsm.xiaodiif"
         minSdkVersion 18
@@ -39,7 +39,7 @@ dependencies {
     compile 'com.yolanda.nohttp:nohttp:1.1.0'
     compile 'no.nordicsemi.android:dfu:0.6.2'
     compile 'no.nordicsemi.android.support.v18:scanner:0.1.1'
-    compile(name:'biz_xiaodi_sdk-release-v3.4.2', ext:'aar')
+    compile(name:'biz_xiaodi_sdk-release-v3.4.6', ext:'aar')
     compile(name: 'lib_base-release-v3.4.4', ext: 'aar')
     compile(name:'lib_bluetoothle-release-v3.4.1', ext:'aar')
 }
