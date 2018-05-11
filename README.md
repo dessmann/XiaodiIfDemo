@@ -77,7 +77,7 @@ XiaodiIfDemo
 
 &nbsp;&nbsp;&nbsp;&nbsp;版本: v3.4.6  
 &nbsp;&nbsp;&nbsp;&nbsp;更新日期：2018/05/11 16:54  
-&nbsp;&nbsp;&nbsp;&nbsp;更新内容：  
+&nbsp;&nbsp;&nbsp;&nbsp;更新内容：   
 &nbsp;&nbsp;&nbsp;&nbsp;去掉网络接口与页面请求地址中的端口信息 
 
 &nbsp;&nbsp;&nbsp;&nbsp;版本: v3.4.3  
