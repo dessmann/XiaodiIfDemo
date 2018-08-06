@@ -75,6 +75,11 @@ XiaodiIfDemo
 # 五.更新历史
 &nbsp;&nbsp;&nbsp;&nbsp;最新的的更新历史请参考项目Release标记
 
+&nbsp;&nbsp;&nbsp;&nbsp;版本: v3.4.7
+&nbsp;&nbsp;&nbsp;&nbsp;更新日期：2018/08/06 15:41
+&nbsp;&nbsp;&nbsp;&nbsp;更新内容：
+&nbsp;&nbsp;&nbsp;&nbsp;解决锁固件升级，REGLOCK广播名的兼容性问题
+
 &nbsp;&nbsp;&nbsp;&nbsp;版本: v3.4.6  
 &nbsp;&nbsp;&nbsp;&nbsp;更新日期：2018/05/11 16:54  
 &nbsp;&nbsp;&nbsp;&nbsp;更新内容：  
