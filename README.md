@@ -75,6 +75,11 @@ XiaodiIfDemo
 # 五.更新历史
 &nbsp;&nbsp;&nbsp;&nbsp;最新的的更新历史请参考项目Release标记
 
+&nbsp;&nbsp;&nbsp;&nbsp;版本: v3.4.6  
+&nbsp;&nbsp;&nbsp;&nbsp;更新日期：2018/05/11 16:54  
+&nbsp;&nbsp;&nbsp;&nbsp;更新内容：  
+&nbsp;&nbsp;&nbsp;&nbsp;去掉网络接口与页面请求地址中的端口信息 
+
 &nbsp;&nbsp;&nbsp;&nbsp;版本: v3.4.3  
 &nbsp;&nbsp;&nbsp;&nbsp;更新日期：2017/12/12 10:53  
 &nbsp;&nbsp;&nbsp;&nbsp;更新内容：  
