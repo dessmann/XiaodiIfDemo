@@ -62,7 +62,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if (view.getId() == R.id.initButton) {
             //库初始化
             XiaodiSdkLibInit.init(this, "25");
-//            ServerUnit.getInstance().enableOnlineServer();
+            ServerUnit.getInstance().enableOnlineServer();
             logTextView.setText("库初始化成功");
         } else if (view.getId() == R.id.loginButton) {
             dialogView = LayoutInflater.from(MainActivity.this).inflate(R.layout.dialog_login, null);
@@ -140,7 +140,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                             "18668165280",
                             "dccjll",
                             "T700_978e",
-                            "FE:0A:A3:D2:97:8E",
+                            "aaaa",
                             "88888888",
                             "T700_0",
                             "LOCK",
