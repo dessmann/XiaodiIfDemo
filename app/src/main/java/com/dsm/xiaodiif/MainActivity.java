@@ -19,6 +19,7 @@ import com.dsm.xiaodi.biz.sdk.XiaodiSdkLibInit;
 import com.dsm.xiaodi.biz.sdk.business.BusinessResponse;
 import com.dsm.xiaodi.biz.sdk.business.adddevice.AddDevice;
 import com.dsm.xiaodi.biz.sdk.business.deviceinfo.WifiUpdate;
+import com.dsm.xiaodi.biz.sdk.business.smartkey.CleanSmartKey;
 import com.dsm.xiaodi.biz.sdk.servercore.ServerUnit;
 
 import java.util.List;
@@ -40,6 +41,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.configWifiButton).setOnClickListener(this);
         findViewById(R.id.loadDeviceListButton).setOnClickListener(this);
         findViewById(R.id.uploadLogButton).setOnClickListener(this);
+        findViewById(R.id.clearSmartkeyButton).setOnClickListener(this);
         logTextView = (TextView) findViewById(R.id.logTextView);
         dialog = new ProgressDialog(this);
     }
@@ -258,6 +260,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     ToastUtil.showToast("上传log日志失败");
                 }
             });
+        } else if (view.getId() == R.id.clearSmartkeyButton) {
+//            dialog.show();
+            new CleanSmartKey("abc", new BusinessResponse() {
+                @Override
+                public void onSuccess(Object o) {
+//                    dialog.dismiss();
+                }
+
+                @Override
+                public void onFailure(String s, int i) {
+//                    dialog.dismiss();
+                }
+            }).walk();
         }
     }
 }
