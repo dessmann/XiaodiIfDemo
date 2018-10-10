@@ -7,4 +7,5 @@
     <string name="upload_log">上传日志</string>
     <string name="load_device_list">加载设备列表</string>
     <string name="clear_smartkey">清空智能钥匙</string>
+    <string name="logout_device">注销锁具</string>
 </resources>

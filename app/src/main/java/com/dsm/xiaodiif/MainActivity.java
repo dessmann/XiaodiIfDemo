@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ import com.base.util.log.LogUtil;
 import com.dsm.xiaodi.biz.sdk.XiaodiSdkLibInit;
 import com.dsm.xiaodi.biz.sdk.business.BusinessResponse;
 import com.dsm.xiaodi.biz.sdk.business.adddevice.AddDevice;
+import com.dsm.xiaodi.biz.sdk.business.deviceinfo.Logout;
 import com.dsm.xiaodi.biz.sdk.business.deviceinfo.WifiUpdate;
 import com.dsm.xiaodi.biz.sdk.business.smartkey.CleanSmartKey;
 import com.dsm.xiaodi.biz.sdk.servercore.ServerUnit;
@@ -42,6 +44,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.loadDeviceListButton).setOnClickListener(this);
         findViewById(R.id.uploadLogButton).setOnClickListener(this);
         findViewById(R.id.clearSmartkeyButton).setOnClickListener(this);
+        findViewById(R.id.btnDevLogout).setOnClickListener(this);
         logTextView = (TextView) findViewById(R.id.logTextView);
         dialog = new ProgressDialog(this);
     }
@@ -250,14 +253,24 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 @Override
                 public void success(List data, String msg) {
                     dialog.dismiss();
-                    ToastUtil.showToast("上传log日志成功");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ToastUtil.showToast("上传log日志成功");
+                        }
+                    });
                 }
 
                 @Override
                 public void failure(String error, int loglevel) {
                     LogUtil.e(error);
                     dialog.dismiss();
-                    ToastUtil.showToast("上传log日志失败");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ToastUtil.showToast("上传log日志失败");
+                        }
+                    });
                 }
             });
         } else if (view.getId() == R.id.clearSmartkeyButton) {
@@ -271,6 +284,33 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 @Override
                 public void onFailure(String s, int i) {
 //                    dialog.dismiss();
+                }
+            }).walk();
+        } else if (view.getId() == R.id.btnDevLogout) {
+            dialog.show();
+            new Logout("FE:0A:A3:D2:97:8E", "T700_0", "A0.1.007_20161201", new BusinessResponse() {
+                @Override
+                public void onSuccess(Object o) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            dialog.dismiss();
+                            Log.i("iiiii", "注销成功iiiii=====");
+                            ToastUtil.showToast("注销成功");
+                        }
+                    });
+                }
+
+                @Override
+                public void onFailure(final String s, int i) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            dialog.dismiss();
+                            Log.i("iiiii", "注销失败iiiii=====" + s);
+                            ToastUtil.showToast("注销失败");
+                        }
+                    });
                 }
             }).walk();
         }
