@@ -21,13 +21,14 @@ import com.dsm.xiaodi.biz.sdk.business.BusinessResponse;
 import com.dsm.xiaodi.biz.sdk.business.adddevice.AddDevice;
 import com.dsm.xiaodi.biz.sdk.business.deviceinfo.Logout;
 import com.dsm.xiaodi.biz.sdk.business.deviceinfo.WifiUpdate;
+import com.dsm.xiaodi.biz.sdk.business.deviceuser.UserAdd;
 import com.dsm.xiaodi.biz.sdk.business.smartkey.CleanSmartKey;
 import com.dsm.xiaodi.biz.sdk.servercore.ServerUnit;
 
 import java.util.List;
 
 public class MainActivity extends Activity implements View.OnClickListener {
-
+    private static final String TAG = "MainActivity";
     TextView logTextView;
     View dialogView;
     Dialog dialog;
@@ -38,6 +39,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.initButton).setOnClickListener(this);
+        findViewById(R.id.addUserButton).setOnClickListener(this);
         findViewById(R.id.loginButton).setOnClickListener(this);
         findViewById(R.id.addLockButton).setOnClickListener(this);
         findViewById(R.id.configWifiButton).setOnClickListener(this);
@@ -66,9 +68,24 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         if (view.getId() == R.id.initButton) {
             //库初始化
-            XiaodiSdkLibInit.init(this, "25");
+            XiaodiSdkLibInit.init(this, "26");
             ServerUnit.getInstance().enableOnlineServer();
             logTextView.setText("库初始化成功");
+        } else if (view.getId() == R.id.addUserButton) {
+            dialog.show();
+            new UserAdd("FE:0A:A3:D2:97:8E", "0", "18668165280", "安卓测试人员", "18668165281", null,  new BusinessResponse() {
+                @Override
+                public void onSuccess(Object o) {
+                    dialog.dismiss();
+                    Log.i(TAG, "o=" + o);
+                }
+
+                @Override
+                public void onFailure(String s, int i) {
+                    dialog.dismiss();
+                    Log.e(TAG, "s=" + s + ",i=" + i);
+                }
+            }).walk();
         } else if (view.getId() == R.id.loginButton) {
             dialogView = LayoutInflater.from(MainActivity.this).inflate(R.layout.dialog_login, null);
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
