@@ -241,7 +241,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             }).walk();
         } else if (view.getId() == R.id.loadDeviceListButton) {
             dialog.show();
-            ServerUnit.getInstance().loadMainDeviceList("18668165280", null, new ServerUnit.OnServerUnitListener() {
+            ServerUnit.getInstance().loadMainDeviceList("88819006522", null, new ServerUnit.OnServerUnitListener() {
                 @Override
                 public void success(final List list, String s) {
                     dialog.dismiss();
