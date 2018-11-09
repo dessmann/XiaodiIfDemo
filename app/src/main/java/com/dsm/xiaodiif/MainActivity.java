@@ -20,6 +20,7 @@ import com.dsm.xiaodi.biz.sdk.XiaodiSdkLibInit;
 import com.dsm.xiaodi.biz.sdk.business.BusinessResponse;
 import com.dsm.xiaodi.biz.sdk.business.adddevice.AddDevice;
 import com.dsm.xiaodi.biz.sdk.business.deviceinfo.Logout;
+import com.dsm.xiaodi.biz.sdk.business.deviceinfo.OpenRecordUpdateEnableDisable;
 import com.dsm.xiaodi.biz.sdk.business.deviceinfo.WifiUpdate;
 import com.dsm.xiaodi.biz.sdk.business.deviceuser.UserAdd;
 import com.dsm.xiaodi.biz.sdk.business.smartkey.CleanSmartKey;
@@ -29,6 +30,7 @@ import java.util.List;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
+    private static final String mac = "FB:4F:37:25:D9:D5";
     TextView logTextView;
     View dialogView;
     Dialog dialog;
@@ -39,6 +41,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.initButton).setOnClickListener(this);
+        findViewById(R.id.btnOpenRecordeEnable).setOnClickListener(this);
+        findViewById(R.id.btnOpenRecordeDisable).setOnClickListener(this);
         findViewById(R.id.addUserButton).setOnClickListener(this);
         findViewById(R.id.loginButton).setOnClickListener(this);
         findViewById(R.id.addLockButton).setOnClickListener(this);
@@ -71,6 +75,36 @@ public class MainActivity extends Activity implements View.OnClickListener {
             XiaodiSdkLibInit.init(this, "26");
             ServerUnit.getInstance().enableOnlineServer();
             logTextView.setText("库初始化成功");
+        } else if (view.getId() == R.id.btnOpenRecordeEnable) {
+            dialog.show();
+            new OpenRecordUpdateEnableDisable(mac, "0", new BusinessResponse() {
+                @Override
+                public void onSuccess(Object o) {
+                    dialog.dismiss();
+                    Log.i(TAG, "启用开门记录成功，o=" + o);
+                }
+
+                @Override
+                public void onFailure(String s, int i) {
+                    dialog.dismiss();
+                    Log.i(TAG, "启用开门记录失败，s=" + s + ",i=" + i);
+                }
+            }).walk();
+        } else if (view.getId() == R.id.btnOpenRecordeDisable) {
+            dialog.show();
+            new OpenRecordUpdateEnableDisable(mac, "1", new BusinessResponse() {
+                @Override
+                public void onSuccess(Object o) {
+                    dialog.dismiss();
+                    Log.i(TAG, "禁用开门记录成功，o=" + o);
+                }
+
+                @Override
+                public void onFailure(String s, int i) {
+                    dialog.dismiss();
+                    Log.i(TAG, "禁用开门记录失败，s=" + s + ",i=" + i);
+                }
+            }).walk();
         } else if (view.getId() == R.id.addUserButton) {
             dialog.show();
             new UserAdd("FE:0A:A3:D2:97:8E", "0", "18668165280", "安卓测试人员", "18668165281", null,  new BusinessResponse() {
